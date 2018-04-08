@@ -1,0 +1,2 @@
+# DiscordCheckers
+Discord Checkers bot
