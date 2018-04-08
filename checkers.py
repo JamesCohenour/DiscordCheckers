@@ -1,10 +1,6 @@
 import discord
 import asyncio
 
-client = discord.Client()
-
-board = [[range(7)],[range(7)]]
-
 class Space:
 
     def __init__(self, spaceColor, piece):
@@ -16,9 +12,6 @@ class Space:
 
     def emptySpace(self):
         self.piece = False
-
-
-
 
 class Piece:
 
@@ -57,8 +50,20 @@ class Piece:
             self.kingPiece()
         elif newYPos == 0 and self.pieceColor == "black":
             self.kingPiece()
-        
-
     
     def kingPiece(self):
         self.king = True
+
+client = discord.Client()
+
+board = [[range(7)],[range(7)]]
+
+for x in range(1, 7, 2):
+    for y in range(0, 6, 2):
+        board[x][y] = Space("white", False)
+        board[x][y] = Piece("black", x, y, False)
+
+for x in range(0, 6, 2):
+    for y in range(1, 7, 2):
+        board[x][y] = Space("black", False)
+        board[x][y] = Piece("white", x, y, False)
